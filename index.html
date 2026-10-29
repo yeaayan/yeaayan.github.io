@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ayan Sarkar · Web Developer</title>
+<meta name="description" content="Ayan Sarkar builds websites and apps for people and businesses. Founder of Uniqou.">
+<meta name="theme-color" content="#0c0c0e">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23111'/><text x='50' y='70' font-size='58' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0e;--surf:#151518;--bd:#2a2a30;--tx:#ededf0;--mute:#8d8d98;--acc:#ffffff;--r:14px}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Geist,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;font-size:17px;min-height:100dvh;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:6px}
+svg.i{width:1.1em;height:1.1em;fill:currentColor;flex:none}
+b,strong{font-weight:600}
+
+/* top nav */
+.navwrap{position:sticky;top:0;z-index:50;padding:calc(env(safe-area-inset-top) + 16px) 14px 0;display:flex;justify-content:center;pointer-events:none}
+nav.pill{pointer-events:auto;display:flex;gap:2px;padding:5px;background:#16161aE6;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--bd);border-radius:99px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+nav.pill::-webkit-scrollbar{display:none}
+nav.pill button{background:none;border:0;padding:8px 16px;border-radius:99px;color:var(--mute);font-size:.95rem;white-space:nowrap;transition:color .2s,background .2s}
+nav.pill button:hover{color:var(--tx)}
+nav.pill button.on{background:#26262c;color:#fff}
+
+/* page */
+main{max-width:640px;margin:0 auto;padding:44px 22px 90px}
+.rv{opacity:0;transform:translateY(10px);animation:rv .7s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--d,0)*90ms + 120ms)}
+@keyframes rv{to{opacity:1;transform:none}}
+h1{font-size:clamp(1.9rem,6.4vw,2.6rem);font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-bottom:26px}
+main p{margin-bottom:20px}
+a.l,button.l{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--tx);text-decoration:underline;text-decoration-color:#5b5b66;text-underline-offset:4px;text-decoration-thickness:1.5px;transition:text-decoration-color .2s}
+a.l:hover,button.l:hover{text-decoration-color:#fff}
+.sub{color:var(--mute);font-size:.95rem}
+.social{display:flex;gap:10px;margin:28px 0 8px}
+.social a{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--bd);border-radius:50%;background:var(--surf);font-size:1.1rem;color:var(--mute);transition:color .2s,border-color .2s,transform .2s}
+.social a:hover{color:#fff;border-color:#55555f;transform:translateY(-3px)}
+.loc{margin:34px 0 4px;font-weight:600}
+h2.sec{font-size:1rem;font-weight:600;margin:46px 0 4px}
+.rows a,.rows div.r{display:block;text-decoration:none;padding:16px 0;border-bottom:1px solid var(--bd);transition:padding .25s}
+.rows a:hover{padding-left:8px}
+.rows .t{display:flex;justify-content:space-between;gap:12px;font-weight:600}
+.rows .t em{font-style:normal;font-weight:500;font-size:.78rem;color:var(--mute);border:1px solid var(--bd);border-radius:99px;padding:1px 10px;align-self:center;white-space:nowrap}
+.rows .d{color:var(--mute);font-size:.95rem;margin-top:2px}
+
+/* windows */
+.win{position:fixed;z-index:100;width:min(520px,92vw);max-height:76vh;background:var(--surf);border:1px solid var(--bd);border-radius:var(--r);box-shadow:0 30px 80px #000c;display:flex;flex-direction:column;animation:wpop .25s cubic-bezier(.2,.9,.3,1)}
+.win.closing{animation:wout .16s ease forwards}
+@keyframes wpop{from{opacity:0;transform:translateY(14px) scale(.96)}}
+@keyframes wout{to{opacity:0;transform:scale(.96)}}
+.bar{display:flex;align-items:center;gap:10px;padding:12px 14px 12px 18px;border-bottom:1px solid var(--bd);cursor:grab;user-select:none;touch-action:none;position:relative}
+.bar:active{cursor:grabbing}
+.bar b{flex:1;font-size:.95rem;font-weight:600}
+.x{width:30px;height:30px;border-radius:50%;border:1px solid var(--bd);background:#1e1e23;color:var(--mute);display:grid;place-items:center;font-size:1.1rem;line-height:1;transition:background .2s,color .2s}
+.x:hover{background:#2c2c33;color:#fff}
+.body{padding:20px 20px 24px;overflow:auto;overscroll-behavior:contain;font-size:.98rem}
+.body h3{font-size:1.5rem;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px;font-weight:600}
+.body p{margin-bottom:12px;color:#c9c9d0}
+.item{padding:14px 0;border-top:1px solid var(--bd)}
+.item:first-of-type{border-top:0;padding-top:6px}
+.item .t{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:600}
+.item .t small{font-weight:400;color:var(--mute);font-size:.85rem}
+.item p{margin:4px 0 0;font-size:.95rem}
+.grp{margin-top:16px;color:var(--mute);font-size:.82rem;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.chip{border:1px solid var(--bd);border-radius:99px;padding:3px 13px;font-size:.88rem;background:#1b1b20;transition:background .2s,border-color .2s}
+.chip:hover{background:#26262c;border-color:#55555f}
+.btn{display:inline-flex;align-items:center;gap:8px;margin:10px 8px 0 0;padding:10px 18px;border-radius:99px;border:1px solid var(--bd);background:#1e1e23;color:var(--tx);text-decoration:none;font-weight:500;font-size:.93rem;transition:transform .2s,background .2s}
+.btn:hover{background:#2a2a31;transform:translateY(-2px)}
+.btn.p{background:#fff;color:#0c0c0e;border-color:#fff;font-weight:600}
+.btn.p:hover{background:#e4e4e8}
+.scrim{display:none}
+
+.ripple{position:fixed;width:10px;height:10px;border:1.5px solid #ffffffaa;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);animation:rip .7s ease-out forwards;z-index:400}
+@keyframes rip{to{width:96px;height:96px;opacity:0}}
+.avail{display:inline-flex;align-items:center;gap:9px;margin:4px 0 0;padding:7px 15px;border:1px solid var(--bd);border-radius:99px;background:var(--surf);font-size:.92rem;color:var(--mute)}
+.avail i{width:8px;height:8px;border-radius:50%;background:#3ddc84;animation:pl 2s infinite}
+@keyframes pl{50%{box-shadow:0 0 0 6px #3ddc8430}}
+.item.acc{cursor:pointer}
+.item.acc .pm{display:inline-block;margin-left:8px;color:var(--tx);font-size:1.05rem;transition:transform .3s}
+.item.acc.open .pm{transform:rotate(45deg)}
+.more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.more>div{overflow:hidden}
+.item.open .more{grid-template-rows:1fr}
+.more ul{padding:8px 0 2px 18px;font-size:.93rem;color:#c9c9d0}
+.more li{margin:3px 0}
+.chat{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.b{max-width:86%;padding:10px 15px;border-radius:18px;background:#1e1e23;font-size:.95rem;line-height:1.5;animation:bin .35s ease}
+.b.me{align-self:flex-end;background:#fff;color:#0c0c0e}
+@keyframes bin{from{opacity:0;transform:translateY(8px)}}
+.dots span{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:var(--mute);animation:bnc 1s infinite}
+.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+@keyframes bnc{50%{transform:translateY(-4px);opacity:.5}}
+.qs{display:grid;gap:7px;margin-top:16px}
+.q{text-align:left;background:none;border:1px solid var(--bd);border-radius:12px;padding:11px 15px;color:var(--mute);font-size:.93rem;transition:color .2s,border-color .2s,transform .2s}
+.q:hover:not(:disabled){color:#fff;border-color:#55555f;transform:translateX(4px)}
+.q:disabled{opacity:.35;cursor:default}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 26px);transform:translate(-50%,16px);opacity:0;background:#fff;color:#0c0c0e;padding:10px 20px;border-radius:99px;font-weight:500;font-size:.92rem;transition:opacity .3s,transform .3s;z-index:500;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:700px){
+body{font-size:16.5px}
+.navwrap{padding-left:12px;padding-right:12px}
+main{padding:36px 20px 70px}
+.scrim{display:block;position:fixed;inset:0;background:#000b;z-index:90;animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.win{left:0!important;right:0;top:auto!important;bottom:0;width:100%;max-height:86dvh;border-radius:22px 22px 0 0;border-bottom:0;animation:sheet .35s cubic-bezier(.2,.9,.3,1);padding-bottom:env(safe-area-inset-bottom)}
+.win.closing{animation:sheetout .22s ease forwards}
+@keyframes sheet{from{transform:translateY(100%)}}
+@keyframes sheetout{to{transform:translateY(100%)}}
+.bar{cursor:default;padding-top:20px}
+.bar::before{content:"";position:absolute;left:50%;top:8px;width:40px;height:4px;border-radius:4px;background:#3a3a42;transform:translateX(-50%)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="navwrap"><nav class="pill" id="nav" aria-label="Sections"></nav></div>
+
+<main>
+  <h1 class="rv" style="--d:0">hey, i'm ayan sarkar.</h1>
+  <p class="rv" style="--d:1">i'm a <b>web developer</b> from siliguri, west bengal. i build <b>websites and web apps</b> for people, shops and businesses: online stores, portfolios, business sites, course platforms and custom apps.</p>
+  <p class="rv" style="--d:2">i designed, built and launched <a class="l" href="https://uniqou.in" target="_blank" rel="noopener">uniqou</a>, a platform where students find <b>project teammates, co-founders and hackathon partners</b>. i built it on my own, from the first idea to a live product.</p>
+  <p class="rv" style="--d:3">i'm open to <b>client projects of all kinds</b>, and i'm moving further into <b>mobile apps</b>. i left engineering college to build full-time. i'm also an artist with an <b>instagram account of 8k+ followers</b>, so i know how to grow an audience.</p>
+  <p class="rv" style="--d:4">tech moves fast and AI changes what's possible every month. i keep learning the new tools and skills so my clients get better work, faster.</p>
+  <p class="rv" style="--d:5">see my <button class="l" data-open="services">services</button>, my <button class="l" data-open="skills">skills</button>, or <button class="l" data-open="contact">get in touch</button>. you can also <a class="l" href="#" data-pdf download="Ayan_Sarkar_Resume.pdf">download my resume</a>.</p>
+
+  <div class="avail rv" style="--d:5.5"><i></i>Available for new projects</div>
+
+  <div class="social rv" style="--d:6" id="social"></div>
+
+  <div class="rv" style="--d:7">
+    <p class="loc">siliguri</p>
+    <p class="sub" id="clock">&nbsp;</p>
+  </div>
+
+  <div class="rv" style="--d:8">
+    <h2 class="sec">Selected work</h2>
+    <div class="rows">
+      <a href="https://uniqou.in" target="_blank" rel="noopener"><div class="t">Uniqou <em>Live</em></div><div class="d">Helps students find teammates, co-founders and hackathon partners.</div></a>
+      <div class="r"><div class="t">Client projects <em>Ongoing</em></div><div class="d">Websites and web apps for clients, including a course-selling site.</div></div>
+      <div class="r"><div class="t">AI film agency <em>Partnership</em></div><div class="d">AI-generated film and video for clients.</div></div>
+    </div>
+  </div>
+</main>
+
+<script>
+
+// resume PDF is embedded in the page, so it works even if the file is missing
+const PDF_B64="JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUgo+PgplbmRvYmoKMiAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjEgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iagozIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhLUJvbGQgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YyIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNCAwIG9iago8PAovQSA8PAovUyAvVVJJIC9UeXBlIC9BY3Rpb24gL1VSSSAobWFpbHRvOmF5YW5zYXJrYXJyNkBnbWFpbC5jb20pCj4+IC9Cb3JkZXIgWyAwIDAgMCBdIC9SZWN0IFsgMzAzLjk3MiA3NDAuOTMwMSA0MDguOTA3MiA3NTEuOTcwMSBdIC9TdWJ0eXBlIC9MaW5rIC9UeXBlIC9Bbm5vdAo+PgplbmRvYmoKNSAwIG9iago8PAovQSA8PAovUyAvVVJJIC9UeXBlIC9BY3Rpb24gL1VSSSAoaHR0cHM6Ly9saW5rZWRpbi5jb20vaW4vYXlhbnNhcmthcnJyKQo+PiAvQm9yZGVyIFsgMCAwIDAgXSAvUmVjdCBbIDEzMC4xODQgNzI3LjUzMDEgMjQ1LjIxMTYgNzM4LjU3MDEgXSAvU3VidHlwZSAvTGluayAvVHlwZSAvQW5ub3QKPj4KZW5kb2JqCjYgMCBvYmoKPDwKL0EgPDwKL1MgL1VSSSAvVHlwZSAvQWN0aW9uIC9VUkkgKGh0dHBzOi8veC5jb20veWVhYXlhbikKPj4gL0JvcmRlciBbIDAgMCAwIF0gL1JlY3QgWyAyNTIuODg0NCA3MjcuNTMwMSAzMTQuNzU0NCA3MzguNTcwMSBdIC9TdWJ0eXBlIC9MaW5rIC9UeXBlIC9Bbm5vdAo+PgplbmRvYmoKNyAwIG9iago8PAovQSA8PAovUyAvVVJJIC9UeXBlIC9BY3Rpb24gL1VSSSAoaHR0cHM6Ly9pbnN0YWdyYW0uY29tL3llYWF5YW4pCj4+IC9Cb3JkZXIgWyAwIDAgMCBdIC9SZWN0IFsgMzIyLjQyNzIgNzI3LjUzMDEgNDIwLjA4NTIgNzM4LjU3MDEgXSAvU3VidHlwZSAvTGluayAvVHlwZSAvQW5ub3QKPj4KZW5kb2JqCjggMCBvYmoKPDwKL0EgPDwKL1MgL1VSSSAvVHlwZSAvQWN0aW9uIC9VUkkgKGh0dHBzOi8vdW5pcW91LmluKQo+PiAvQm9yZGVyIFsgMCAwIDAgXSAvUmVjdCBbIDQyNy43NTggNzI3LjUzMDEgNDY1LjA5MTYgNzM4LjU3MDEgXSAvU3VidHlwZSAvTGluayAvVHlwZSAvQW5ub3QKPj4KZW5kb2JqCjkgMCBvYmoKPDwKL0EgPDwKL1MgL1VSSSAvVHlwZSAvQWN0aW9uIC9VUkkgKGh0dHBzOi8vdW5pcW91LmluKQo+PiAvQm9yZGVyIFsgMCAwIDAgXSAvUmVjdCBbIDU3LjAyMzYyIDU2Ni43NzAxIDk1Ljk4MDQyIDU4MC4xNzAxIF0gL1N1YnR5cGUgL0xpbmsgL1R5cGUgL0Fubm90Cj4+CmVuZG9iagoxMCAwIG9iago8PAovQW5ub3RzIFsgNCAwIFIgNSAwIFIgNiAwIFIgNyAwIFIgOCAwIFIgOSAwIFIgXSAvQ29udGVudHMgMTQgMCBSIC9NZWRpYUJveCBbIDAgMCA1OTUuMjc1NiA4NDEuODg5OCBdIC9QYXJlbnQgMTMgMCBSIC9SZXNvdXJjZXMgPDwKL0ZvbnQgMSAwIFIgL1Byb2NTZXQgWyAvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJIF0KPj4gL1JvdGF0ZSAwIAogIC9UcmFucyA8PAoKPj4gL1R5cGUgL1BhZ2UKPj4KZW5kb2JqCjExIDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgMTMgMCBSIC9UeXBlIC9DYXRhbG9nCj4+CmVuZG9iagoxMiAwIG9iago8PAovQXV0aG9yIChBeWFuIFNhcmthcikgL0NyZWF0aW9uRGF0ZSAoRDoyMDI2MTAyOTE4MjgzMSswMCcwMCcpIC9DcmVhdG9yIChcKHVuc3BlY2lmaWVkXCkpIC9LZXl3b3JkcyAoKSAvTW9kRGF0ZSAoRDoyMDI2MTAyOTE4MjgzMSswMCcwMCcpIC9Qcm9kdWNlciAoUmVwb3J0TGFiIFBERiBMaWJyYXJ5IC0gXChvcGVuc291cmNlXCkpIAogIC9TdWJqZWN0IChcKHVuc3BlY2lmaWVkXCkpIC9UaXRsZSAoQXlhbiBTYXJrYXIgLSBSZXN1bWUpIC9UcmFwcGVkIC9GYWxzZQo+PgplbmRvYmoKMTMgMCBvYmoKPDwKL0NvdW50IDEgL0tpZHMgWyAxMCAwIFIgXSAvVHlwZSAvUGFnZXMKPj4KZW5kb2JqCjE0IDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDIzNjAKPj4Kc3RyZWFtCkdiISNdPj5zOUcnUm80SFM8bWhZLmtBM2BQK0I+OjMvM01bNkYjIkgxVj46MD4ySFI1Ll9AMk5CKTpQN0czK1ZmW1NfWTIhQWo6OGRbcD5bXjlkQ0hfaj47JjhIcyxqTDApRFpwXTY+T2k0JU4jTjZibGs1NTkwVjA8WFpbWHF1YWchLSZeYkBJM2Y3Ky5pMm1CcGclIyROPWQ7XUtPLjkhc243RjYiSDtRajJjKjdoI1BjXi1aSV9RLDw6Xj1dSFFobE47blkmY2Q5N1EkLU44Zz9ebDAkS1BrXylfZ1RwTUAiZURza1hKdHQ8QGRsUkFXYTcmaz89RzNkL0gxUVFSTm8nVlV0PGxoR1BzNS5jRGs1QF5xTS87QzM8QjkjYDZjWSZSYW0vcmZncGBnXFVlXTVEOGo4TzpaM2dbNEQ+UjVBQkNWNTddNEkmNzdxVFFzLz4iL2tzSk9pZyIrUDNZUjMoSSouJzkrVk4hWkxPKypEZVZaWEc4JCtANGBPOTIqTSpOdFkuckZeRkskQC1ARChGQypFbUtMaHA7XFFOR2JxJXJpMmk8J3QlPVJDP1VNWEc0QFhkYmk4TSdQaVlOJDwwSFVfPU0ybDIoSyVhcD9cUmdbUEJWXSdvNG03PDAmcUMrNmFzQ1QhOGZUKSVCPmREKmZgRlRURCgjPT4zYEB1RTdCZVwibFZwKWEoc1AiJihVXkFhWydoNWFlN0pfaCZ0cDlwaz9WIWxba0xLU2FXdWlEZFQwKjhcYD5NWkgsUnAnOWEvK2JcJSFbJTZRJitkcWNvWjxDJCwzcSNbPz8nTU8yYEwnO2VFLTcuV24hQXROWkZqNScuPUFHLVVsOD1BO0YtcVItNjtsbnIqSGJIaVdNYj4oSk4jMjcjOm1jRTckTFNILW9mJTlBNixoI1BkaituN0NyaDxNUFc+KDMqJkliMEFyWU1QOFRxLC1edStkJi84O0NCV2JFJyc+Wl0+KDZXPlhvJSFTXVYocmhwMCRwT1A3bU0xVDRmKWcjVmFUWXU6RWNXV2tiIUdCSmxoNjkpb2csbSJhV1osSjdfY1gnW05OWjNQLmBbOW83OnRYcHIrQj1yWHBYSC9oNWAuZmxzImMhIUBYKU5eVz5cT0xLXExiMShdayJPKm9sWmYjcSRTJzAsUXJALVpUQWI/MjVhNGVWaUstb2hIUHRmRWVPRWNNQypnQFtMPipoPFlyJzBaVHNnPC1uQlskT2psdTlQQC8uN3UlVFopPFRATT5HaikrYEJYPUBUZWAoJ0A9RTs2cmMkW0FyRVVzOjEzWEVCaEhHYFQ2YVcxYFBJVEJaay5uO3A9SyJhSVBtbERVUUUlVGMqZCslITQiW14oQV9WRTg9NDQ/KS1YPFBML1pucS8pbUIwMU5mamk9V2tNI3MxImlWVTRxM0kxcjdBNiVcbVZGOD1cRWllTzAvMEtUaElSLC1yaFw8Vl9WQmpAKyFlPUdeK0JYcTZFXlRLQz9qN0JeTl4jSiRWYllsYV0/Zjg4KDFBZ0U4TGhLN2IoPGszN0BSRUJEKC4vZGA+LnE9Y2NyS3VxVVdBajhvdUxWIjNPNXFyPFp1Jms4N2U2SUxOSFZLWFdlXS1wamgwLFhwKCVAKT5rZSZBJT08OGtqKjtgMGA7VFgiSilOXXBLKi9wZC1CZzk6UTlNaV5xVVM+M2ptJjFpQWcrJjQ3Y2s6Jk5aMyJgRXNLWmZLUUFXKyVKNFhTVStVZSo8Y0lmdCwmbzpQQW8nWV9qO2suZHUjIz41LDokTUUwZ2UrVWwrY0JTMFUnTS9TTCsib0FGQjhMWiQ0NkstY2xvS05HJl04XWJKMVRoXVonLGhYa1NiPUEiKT5zRHVnb1pGJ0FPbz5zPSkyNDZYOWk2bk51PVxEO051NUlFJVMxZXApODA0XmVdPSRQRF1lLypRLlo0KTordEpkUUcnZTh0Szs5VWZoYDJWVSQlZyMsNmdJZVQrXlZPZkdCXXBqZUxtVD00NiVNWSVma24naj5CYDZuXj9qaDo/QkJiOGsiZkE6PD1wU0RJbzU6KTEvbzJLK2wyR2gqUTRsYkJgNjVXTDEyRTJzQDlvcksnMWAvQ3IpYjNpLWVfanFsLTQxJ2Y7YWMtXytjWkVFZl86IkFdcWJpb1NkKy5AK3UoQlQiNko6bmJxU2A/SnBKXWJGQjZkS2ArJFAxODgnYSFNcnAicFtrbzcwTDtgLVxQaVxeZkFuOClBXUxobU1ZaV5MIk4vMkM5JUpvLDZOdW85cnAzWDNrZnUmSVtpamNWSFZYXV05SyVOZGhVa1pyN28qZiU7TCxqOUk4dTN1KSFFS2UsLjltbi0zdUpPMj85WEtxWm4oIUEocyhiKiRiQjM7WUE+JCpHXFQ/XWEtXjBDU0R0MkksWEkvalpkamFjM243aChgMCtjI1FGdTUzJT9gOHVpazw1LjNLXjlBLi5tRFhyU1YicTFsPz1OQWhaaGg2TF5uLVRuLFknWWdzOVdpOzxVJzhAJjAvNW5nSmwtNzVXQyMzU0tYMC0sayRUOi5gImtnaWFbcUVGLT9lJEhBWCc9alo7RTsqMkshUkBBWDQ3MTFBb2tbYmpFYF1qJUchU2grXkwhYldpbmhSZj8/WTZJXEwiIj1aMyE4KipNOHQ/JFErZ2xjPiYwVCZXcGYqJldea1JDQnNqMzE4MChRMy5DNFxITTRrZHItN09bUFUyMWQ6JzZqO1FsQFRnTzxRMjNjdWdMOSVhNl0oSFNtRmIrRixxPWohNz4rQihvLS9kISNaTW5hIVZYZHFZZSZgVmxpI1JLYTc4cFU3b1NkSyhwZm51Z1JOQE1tRytmLE1tXEA0dUJVbTZlcGFzKUVUV05aa2pxU0hHXl9kUFArNmRtMmpSOWokU3AhOjJmZlMhVzhhN1dUUSlNUyRFMFxlMnBSX20mam1FWSIkLCZdNWhQZlJEJm1OJldMNnEoOT1bMjBXVCRRZSFURCZPbmI3OWcwZGA3JDxBKi9JKS80ZkgiJzxLYkUjRkwwbFwyKWQpM0VDSzxTPVFkNUZMOi1TPkhMKDBmdHBZKiUiYnJuPGpmMDNAMlxwTjIyPzFdXyUpdFZrKD1abENnaGo9VFFyclMnY1NKO34+ZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgMTUKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDYxIDAwMDAwIG4gCjAwMDAwMDAxMDIgMDAwMDAgbiAKMDAwMDAwMDIwOSAwMDAwMCBuIAowMDAwMDAwMzIxIDAwMDAwIG4gCjAwMDAwMDA1MDEgMDAwMDAgbiAKMDAwMDAwMDY4OCAwMDAwMCBuIAowMDAwMDAwODYxIDAwMDAwIG4gCjAwMDAwMDEwNDIgMDAwMDAgbiAKMDAwMDAwMTIxMCAwMDAwMCBuIAowMDAwMDAxMzc5IDAwMDAwIG4gCjAwMDAwMDE2MzMgMDAwMDAgbiAKMDAwMDAwMTcwMyAwMDAwMCBuIAowMDAwMDAxOTg5IDAwMDAwIG4gCjAwMDAwMDIwNTAgMDAwMDAgbiAKdHJhaWxlcgo8PAovSUQgCls8YzlhMGIwNmZiNjA1NzA5YzEzMjlmNGExMWIxYTRhMjc+PGM5YTBiMDZmYjYwNTcwOWMxMzI5ZjRhMTFiMWE0YTI3Pl0KJSBSZXBvcnRMYWIgZ2VuZXJhdGVkIFBERiBkb2N1bWVudCAtLSBkaWdlc3QgKG9wZW5zb3VyY2UpCgovSW5mbyAxMiAwIFIKL1Jvb3QgMTEgMCBSCi9TaXplIDE1Cj4+CnN0YXJ0eHJlZgo0NTAyCiUlRU9GCg==";
+(()=>{try{const bin=atob(PDF_B64),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);window.PDF_URL=URL.createObjectURL(new Blob([u],{type:'application/pdf'}))}catch(e){window.PDF_URL='Ayan_Sarkar_Resume.pdf'}})();
+document.addEventListener('click',e=>{const a=e.target.closest('[data-pdf]');if(a)a.href=window.PDF_URL},true);
+const EMAIL='ayansarkarr6@gmail.com';
+const LINKS={
+ linkedin:{n:'LinkedIn',u:'https://linkedin.com/in/ayansarkarrr',p:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'},
+ x:{n:'X',u:'https://x.com/yeaayan',p:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'},
+ instagram:{n:'Instagram',u:'https://instagram.com/yeaayan',p:'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z'}
+};
+const ico=k=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${LINKS[k].p}"/></svg>`;
+const acc=(t,s,d,m)=>`<div class="item acc" tabindex="0" role="button" aria-expanded="false"><div class="t">${t}<small>${s}<span class="pm">+</span></small></div><p>${d}</p><div class="more"><div>${m}</div></div></div>`;
+const item=(t,s,d)=>`<div class="item"><div class="t">${t}<small>${s}</small></div><p>${d}</p></div>`;
+
+const W={
+ask:{t:'Ask',h:`<h3>Ask about Ayan</h3><div class="chat"><div class="b">Hi, I'm a quick guide to Ayan's work. What would you like to know?</div></div><div class="qs"></div>`,init(w){
+ const QA=[['What does Ayan do?','Ayan is a web developer from Siliguri. He builds websites and web apps for people, shops and businesses: online stores, portfolios, business sites, course platforms and custom apps.'],
+ ['What has he built?','He designed, built and launched Uniqou, a platform where students find teammates, co-founders and hackathon partners. He also builds websites for clients and co-runs an AI film agency.'],
+ ['Is he taking on new work?',`Yes. He is open to client projects of any size, and to AI or product roles. The quickest way to reach him is <a class="l" href="mailto:${EMAIL}">${EMAIL}</a>.`],
+ ['What is he learning now?','Mobile apps, and the new AI tools that keep launching. He keeps up so his clients get better work, faster.']];
+ const chat=w.querySelector('.chat'),qs=w.querySelector('.qs'),body=w.querySelector('.body');
+ const down=()=>body.scrollTo({top:1e5,behavior:'smooth'});
+ QA.forEach(([q,a])=>{const b=document.createElement('button');b.className='q';b.textContent=q;
+  b.onclick=()=>{b.disabled=true;
+   const me=document.createElement('div');me.className='b me';me.textContent=q;chat.append(me);
+   const t=document.createElement('div');t.className='b dots';t.innerHTML='<span></span><span></span><span></span>';chat.append(t);down();
+   setTimeout(()=>{t.classList.remove('dots');t.innerHTML=a;down()},750)};
+  qs.append(b)});
+}},
+work:{t:'Work',h:`<h3>Selected work</h3><p class="sub">Tap a project to see more.</p>
+${acc('Uniqou','Live · 2026','A platform that helps students find project teammates, co-founders and hackathon partners. Built with React and Supabase.','<ul><li>Build a profile that shows what you are good at</li><li>Send and accept connection requests</li><li>Chat in real time</li><li>Discover new people through a feed</li><li>Share photo posts and sign in with Google</li></ul>')}
+${acc('Client projects','Ongoing','Websites and web apps for clients, including a website for selling a course.','<ul><li>Online stores and shop websites</li><li>Business sites and portfolios</li><li>Course and digital product sites</li><li>Custom web apps</li></ul>')}
+${item('AI film agency','Partnership','I co-run an agency that produces AI-generated film and video for clients.')}
+<a class="btn p" href="https://uniqou.in" target="_blank" rel="noopener">Visit uniqou.in</a>`},
+services:{t:'Services',h:`<h3>What I can build for you</h3>
+${item('Online stores','','Shopping websites for clothing, blankets and home goods, gifts, or anything else you sell, with products, cart and checkout.')}
+${item('Business and shop websites','','A clear, fast website for your shop or company so customers can find you, trust you and contact you.')}
+${item('Portfolio websites','','A personal site that shows your work and gets you noticed, for creators, freelancers and professionals.')}
+${item('Course and digital product sites','','Landing pages and sales flows for selling courses, ebooks and memberships.')}
+${item('Web apps','','Login, databases, messaging and dashboards: the product behind your idea.')}
+${item('Social media growth','','Content and strategy for Instagram and short video, the same work I do for Uniqou.')}
+<a class="btn p" href="mailto:${EMAIL}?subject=Project%20inquiry">Start a project</a>`},
+skills:{t:'Skills',h:`<h3>Skills</h3>
+<div class="grp">Web development</div><div class="chips"><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">HTML & CSS</span><span class="chip">Supabase</span><span class="chip">Git & GitHub</span><span class="chip">Vercel</span><span class="chip">Google OAuth</span></div>
+<div class="grp">AI tools (always learning)</div><div class="chips"><span class="chip">Prompt engineering</span><span class="chip">AI image & video</span><span class="chip">Rapid prototyping</span><span class="chip">New tools as they launch</span></div>
+<div class="grp">Product and marketing</div><div class="chips"><span class="chip">MVP strategy</span><span class="chip">User research</span><span class="chip">Social media marketing</span><span class="chip">Instagram growth</span><span class="chip">Short-form video</span><span class="chip">Copywriting</span></div>
+<div class="grp">Also</div><div class="chips"><span class="chip">Figma</span><span class="chip">Canva</span><span class="chip">Sketch & illustration</span><span class="chip">SolidWorks</span><span class="chip">AutoCAD</span></div>`},
+timeline:{t:'Timeline',h:`<h3>Timeline</h3>
+${item('Freelance developer','2026 – now','Building websites and web apps for clients.')}
+${item('Founder, Uniqou','2026 – now','Designed, built and launched the platform solo.')}
+${item('JGEC, B.Tech Mechanical','2024 – 2026','Jalpaiguri Government Engineering College. Left to build full-time.')}
+${item('Class 12, Margreat (S.N.) English School','2024','Science (PCMB), 72%.')}
+${item('Reseller','Earlier','Bought and resold tech products like phones and laptops.')}
+${item('Artist','Ongoing','Sketch and anime art on Instagram, 8K+ followers.')}`},
+contact:{t:'Contact',h:`<h3>Let's work together</h3>
+<p>Have a project, or hiring for an AI or product role? Send a message and I'll reply fast.</p>
+<a class="btn p" href="mailto:${EMAIL}">${EMAIL}</a><button class="btn" data-copy>Copy email</button><br>
+<a class="btn" href="${LINKS.linkedin.u}" target="_blank" rel="noopener">${ico('linkedin')}LinkedIn</a><a class="btn" href="${LINKS.x.u}" target="_blank" rel="noopener">${ico('x')}X</a><a class="btn" href="${LINKS.instagram.u}" target="_blank" rel="noopener">${ico('instagram')}Instagram</a>`},
+resume:{t:'Resume',h:`<h3>Resume</h3>
+<p>Web developer and product builder. Founder of Uniqou. Websites and web apps for clients, plus social media growth.</p>
+<a class="btn p" href="#" data-pdf download="Ayan_Sarkar_Resume.pdf">Download PDF</a><a class="btn" href="#" data-pdf target="_blank" rel="noopener">View in browser</a>`}
+};
+
+const $=s=>document.querySelector(s),mob=()=>innerWidth<=700;
+let z=100,n=0;
+
+// nav
+const nav=$('#nav');
+nav.innerHTML=`<button data-home class="on">Home</button>`+Object.entries(W).map(([k,w])=>`<button data-k="${k}">${w.t}</button>`).join('');
+nav.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.hasAttribute('data-home')){closeAll();scrollTo({top:0,behavior:'smooth'})}else openWin(b.dataset.k)};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)openWin(b.dataset.open)});
+$('#social').innerHTML=Object.keys(LINKS).map(k=>`<a href="${LINKS[k].u}" target="_blank" rel="noopener" aria-label="${LINKS[k].n}">${ico(k)}</a>`).join('');
+
+function openWin(k){
+  const ex=document.querySelector(`.win[data-k="${k}"]`);
+  if(ex){focus(ex);return}
+  if(mob())closeAll(true);
+  const d=W[k],w=document.createElement('section');
+  w.className='win';w.dataset.k=k;w.setAttribute('role','dialog');w.setAttribute('aria-label',d.t);
+  w.innerHTML=`<div class="bar"><b>${d.t}</b><button class="x" aria-label="Close ${d.t}">×</button></div><div class="body">${d.h}</div>`;
+  if(mob()){const s=document.createElement('div');s.className='scrim';s.onclick=()=>closeWin(w);document.body.append(s);document.body.style.overflow='hidden'}
+  document.body.append(w);
+  if(!mob()){
+    const Wd=w.offsetWidth,H=w.offsetHeight,off=(n++%6)*30;
+    w.style.left=Math.max(10,Math.min(innerWidth-Wd-10,(innerWidth-Wd)/2+off-60))+'px';
+    w.style.top=Math.max(80,Math.min(innerHeight-H-20,innerHeight*.16+off))+'px';
+    drag(w,w.querySelector('.bar'));
+  }
+  w.querySelector('.x').onclick=()=>closeWin(w);
+  if(d.init)d.init(w);
+  w.addEventListener('pointerdown',()=>focus(w));
+  focus(w);
+}
+function closeWin(w){
+  if(w.classList.contains('closing'))return;
+  w.classList.add('closing');
+  document.querySelectorAll('.scrim').forEach(s=>s.remove());document.body.style.overflow='';
+  setTimeout(()=>{w.remove();mark()},mob()?220:160);mark();
+}
+function closeAll(fast){document.querySelectorAll('.win').forEach(w=>{if(fast){w.remove()}else closeWin(w)});if(fast){document.querySelectorAll('.scrim').forEach(s=>s.remove());document.body.style.overflow=''}mark()}
+function focus(w){w.style.zIndex=++z;mark()}
+function mark(){
+  const top=[...document.querySelectorAll('.win:not(.closing)')].sort((a,b)=>b.style.zIndex-a.style.zIndex)[0];
+  nav.querySelectorAll('button').forEach(b=>b.classList.toggle('on',top?b.dataset.k===top.dataset.k:b.hasAttribute('data-home')));
+  const on=nav.querySelector('.on');on&&on.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+}
+function drag(w,h){
+  h.addEventListener('pointerdown',e=>{
+    if(e.target.closest('.x'))return;
+    const sx=e.clientX-w.offsetLeft,sy=e.clientY-w.offsetTop;h.setPointerCapture(e.pointerId);
+    const mv=ev=>{w.style.left=Math.max(0,Math.min(innerWidth-120,ev.clientX-sx))+'px';w.style.top=Math.max(0,Math.min(innerHeight-60,ev.clientY-sy))+'px'};
+    const up=()=>{h.removeEventListener('pointermove',mv);h.removeEventListener('pointerup',up)};
+    h.addEventListener('pointermove',mv);h.addEventListener('pointerup',up);
+  });
+}
+addEventListener('keydown',e=>{if(e.key==='Escape'){const t=[...document.querySelectorAll('.win:not(.closing)')].sort((a,b)=>b.style.zIndex-a.style.zIndex)[0];t&&closeWin(t)}});
+
+// click ripple
+document.addEventListener('pointerdown',e=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;const r=document.createElement('div');r.className='ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.append(r);r.onanimationend=()=>r.remove()});
+// toast + copy email
+const toast=m=>{let t=$('.toast');if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.append(t)}t.textContent=m;t.classList.add('on');clearTimeout(toast.id);toast.id=setTimeout(()=>t.classList.remove('on'),1800)};
+document.addEventListener('click',e=>{if(e.target.closest('[data-copy]')){(navigator.clipboard?navigator.clipboard.writeText(EMAIL):Promise.reject()).then(()=>toast('Email copied'),()=>toast(EMAIL))}});
+// expandable cards
+const flip=el=>{const o=el.classList.toggle('open');el.setAttribute('aria-expanded',o)};
+document.addEventListener('click',e=>{const c=e.target.closest('.item.acc');if(c&&!e.target.closest('a'))flip(c)});
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('acc')){e.preventDefault();flip(e.target)}});
+const tick=()=>{$('#clock').textContent=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kolkata'})+' local time'};tick();setInterval(tick,30000);
+</script>
+</body>
+</html>
