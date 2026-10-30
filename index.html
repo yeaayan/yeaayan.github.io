@@ -103,6 +103,32 @@ h2.sec{font-size:1rem;font-weight:600;margin:46px 0 4px}
 .q:disabled{opacity:.35;cursor:default}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 26px);transform:translate(-50%,16px);opacity:0;background:#fff;color:#0c0c0e;padding:10px 20px;border-radius:99px;font-weight:500;font-size:.92rem;transition:opacity .3s,transform .3s;z-index:500;pointer-events:none}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+/* opening doors */
+body.intro{overflow:hidden}
+body.intro .rv{animation-play-state:paused}
+#intro{position:fixed;inset:0;z-index:1000;overflow:hidden;cursor:pointer;animation:fs 0s 7s forwards}
+@keyframes fs{to{visibility:hidden}}
+#intro .door{position:absolute;top:0;bottom:0;width:50.2%;z-index:2;transition:transform 1.15s cubic-bezier(.76,0,.18,1)}
+#intro .door.l{left:0;background:linear-gradient(90deg,#0a0a0c,#14141a)}
+#intro .door.r{right:0;background:linear-gradient(270deg,#0a0a0c,#14141a)}
+#intro .door i{position:absolute;inset:6vh 5vw;border:1px solid #26262c;border-radius:6px}
+#intro .door::after{content:"";position:absolute;top:50%;width:5px;height:72px;border-radius:5px;background:#3a3a44;transform:translateY(-50%)}
+#intro .door.l::after{right:3vw}#intro .door.r::after{left:3vw}
+#intro.open .door.l{transform:translateX(-101%)}
+#intro.open .door.r{transform:translateX(101%)}
+#intro .sm{position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:linear-gradient(transparent,#fff 30%,#fff 70%,transparent);z-index:3;transform:scaleY(0);transition:transform .5s ease}
+#intro.line .sm{transform:scaleY(1)}
+#intro.open .sm{opacity:0;transition:opacity .4s .25s}
+#intro .glow{position:absolute;left:50%;top:0;bottom:0;width:60vw;margin-left:-30vw;background:radial-gradient(ellipse at center,#ffffff66,transparent 62%);opacity:0;z-index:1;pointer-events:none}
+#intro.open .glow{animation:gl 1.4s ease-out forwards}
+@keyframes gl{25%{opacity:.55}to{opacity:0}}
+#intro .ititle{position:absolute;inset:0;display:grid;place-content:center;gap:10px;text-align:center;z-index:4;opacity:0;transform:translateY(8px);transition:opacity .7s,transform .7s;pointer-events:none}
+#intro.show .ititle{opacity:1;transform:none}
+#intro.open .ititle{opacity:0;transition-duration:.3s}
+#intro .ititle b{font-size:clamp(1.7rem,6.5vw,2.6rem);font-weight:600;letter-spacing:-.025em}
+#intro .ititle span{color:var(--mute);font-size:.85rem;letter-spacing:.18em;text-transform:uppercase}
+#intro .skip{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 26px);left:0;right:0;text-align:center;font-size:.8rem;color:#6a6a76;z-index:4;opacity:0;transition:opacity .5s .8s}
+#intro.show .skip{opacity:1}#intro.open .skip{opacity:0;transition-delay:0s}
 @media (max-width:700px){
 body{font-size:16.5px}
 .navwrap{padding-left:12px;padding-right:12px}
@@ -119,7 +145,8 @@ main{padding:36px 20px 70px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
-<body>
+<body class="intro">
+<div id="intro" aria-hidden="true"><div class="glow"></div><div class="door l"><i></i></div><div class="door r"><i></i></div><div class="sm"></div><div class="ititle"><b>Ayan Sarkar</b><span>Web Developer</span></div><div class="skip">tap to skip</div></div>
 
 <div class="navwrap"><nav class="pill" id="nav" aria-label="Sections"></nav></div>
 
@@ -278,6 +305,21 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-copy]')){(navig
 const flip=el=>{const o=el.classList.toggle('open');el.setAttribute('aria-expanded',o)};
 document.addEventListener('click',e=>{const c=e.target.closest('.item.acc');if(c&&!e.target.closest('a'))flip(c)});
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('acc')){e.preventDefault();flip(e.target)}});
+
+// opening doors (plays once per visit; add ?intro to the link to replay)
+(()=>{
+const el=document.getElementById('intro');if(!el)return;
+const end=()=>{el.remove();document.body.classList.remove('intro')};
+let seen=false;try{seen=sessionStorage.getItem('introSeen')&&!/[?&]intro/.test(location.search)}catch(e){}
+if(seen||matchMedia('(prefers-reduced-motion:reduce)').matches){end();return}
+try{sessionStorage.setItem('introSeen','1')}catch(e){}
+const T=[];let opened=false;
+const open=()=>{if(opened)return;opened=true;el.classList.add('line','open');document.body.classList.remove('intro');T.push(setTimeout(()=>el.remove(),1400))};
+requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('show')));
+T.push(setTimeout(()=>el.classList.add('line'),1500),setTimeout(open,2000));
+const skip=()=>{if(opened)return;T.forEach(clearTimeout);open()};
+el.addEventListener('click',skip);addEventListener('keydown',skip,{once:true});
+})();
 const tick=()=>{$('#clock').textContent=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kolkata'})+' local time'};tick();setInterval(tick,30000);
 </script>
 </body>
