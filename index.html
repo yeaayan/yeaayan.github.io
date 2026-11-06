@@ -242,7 +242,7 @@ ${item('Reseller','Earlier','Bought and resold tech products like phones and lap
 ${item('Artist (just a hobby)','Ongoing','Sketch and anime art for fun. The Instagram account has 8K+ followers.')}`},
 contact:{t:"Let's talk",h:`<h3>Let's talk</h3>
 <p>Tell me about your project, or just say hi. Your message goes straight to my email and I reply fast.</p>
-<form class="cf"><input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none"><label>Your name<input name="name" required autocomplete="name"></label><label>Your email<input name="email" type="email" required autocomplete="email"></label><label>Message<textarea name="message" rows="4" required></textarea></label><button class="btn p" type="submit" style="margin:0">Send message</button><div class="fs" role="status"></div></form>
+<form class="cf"><label>Your name<input name="name" required autocomplete="name"></label><label>Your email<input name="email" type="email" required autocomplete="email"></label><label>Message<textarea name="message" rows="4" required></textarea></label><button class="btn p" type="submit" style="margin:0">Send message</button><div class="fs" role="status"></div></form>
 <div class="grp">or reach me directly</div>
 <a class="btn" href="mailto:${EMAIL}">${EMAIL}</a><button class="btn" data-copy>Copy email</button><br>
 <a class="btn" href="${LINKS.linkedin.u}" target="_blank" rel="noopener">${ico('linkedin')}LinkedIn</a><a class="btn" href="${LINKS.x.u}" target="_blank" rel="noopener">${ico('x')}X</a><a class="btn" href="${LINKS.instagram.u}" target="_blank" rel="noopener">${ico('instagram')}Instagram</a>`},
@@ -355,13 +355,18 @@ if(mob()&&nav.scrollWidth>nav.clientWidth&&!matchMedia('(prefers-reduced-motion:
 // contact form -> your email (FormSubmit). If sending fails, it offers a normal email link instead.
 document.addEventListener('submit',async e=>{
  const f=e.target.closest&&e.target.closest('form.cf');if(!f)return;e.preventDefault();
- const d=Object.fromEntries(new FormData(f)),btn=f.querySelector('button[type=submit]'),st=f.querySelector('.fs');
- if(d._honey)return;btn.disabled=true;st.textContent='Sending...';
+ const btn=f.querySelector('button[type=submit]'),st=f.querySelector('.fs');
+ btn.disabled=true;st.textContent='Sending...';
+ let why='';
  try{
+  const d=Object.fromEntries(new FormData(f));
   const r=await fetch('https://formsubmit.co/ajax/'+EMAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({name:d.name,email:d.email,message:d.message,_subject:'New message from your website',_replyto:d.email,_template:'table'})});
-  const j=await r.json();
-  if(r.ok&&(j.success===true||j.success==='true')){f.reset();st.textContent='Thanks! Your message was sent. I will reply soon.'}else throw 0;
- }catch(err){st.innerHTML='Could not send it. <a class="l" href="mailto:'+EMAIL+'?subject=Hello&body='+encodeURIComponent(d.message||'')+'">Send by email instead</a>'}
+  let j={};try{j=await r.json()}catch(e2){}
+  if(r.ok&&(j.success===true||j.success==='true')){f.reset();st.textContent='Thanks! Your message was sent. I will reply soon.';btn.disabled=false;return}
+  why=(j&&(j.message||j.error))||('HTTP '+r.status);
+ }catch(err){why=(err&&err.message)||'something went wrong'}
+ const mailBody=encodeURIComponent((new FormData(f).get('message'))||'');
+ st.innerHTML='Could not send it ('+String(why).replace(/[<>]/g,'')+'). <a class="l" href="mailto:'+EMAIL+'?subject=Hello&body='+mailBody+'">Send by email instead</a>';
  btn.disabled=false;
 });
 const tick=()=>{$('#clock').textContent=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kolkata'})+' local time'};tick();setInterval(tick,30000);
